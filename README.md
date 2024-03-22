@@ -1,5 +1,9 @@
 # file_explorer_2.0
 
+** Notice **
+
+This project was developed using Python version 3.12.2. If you do not have Python installed or are not running on version 3.12.2, then this application may not work.
+
 ** How to Set up **
 
 To start, it is generally recommended to create a python virtual environment for the project. To do so, navigate to the root directory of this project using cd and run the following command:

@@ -1,5 +1,10 @@
 import customtkinter as ctk
 from dotenv import dotenv_values
+import sys
+
+from typing import (
+  Dict
+)
 
 class GUI(ctk.CTk):
   def __init__(self) -> None:

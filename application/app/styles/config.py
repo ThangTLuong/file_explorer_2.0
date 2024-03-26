@@ -1,0 +1,2 @@
+DEFAULT_FONT = ('Arial', 12)
+DEFAULT_BACKGROUND_COLOR = 'white'

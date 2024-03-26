@@ -1,0 +1,1 @@
+from .encapsulation import Private

@@ -1,6 +1,5 @@
 import customtkinter as ctk
-from dotenv import dotenv_values
-import sys
+from styles import config
 
 from typing import (
   Dict

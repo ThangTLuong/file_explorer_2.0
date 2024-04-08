@@ -64,6 +64,8 @@ class GUI(ctk.CTk):
       fg_color = css.TOP_VIEW_COLOR
     )
     
+    container.grid_columnconfigure([0, 1], weight = 1)
+    
     return container
   
   @decorators.Private

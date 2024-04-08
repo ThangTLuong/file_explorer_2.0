@@ -64,10 +64,18 @@ class GUI(ctk.CTk):
   def _top_view(self, master) -> ctk.CTkFrame:
     container: ctk.CTkFrame = ctk.CTkFrame(
       master = master,
-      fg_color = css.TOP_VIEW_COLOR
+      fg_color = css.TOP_VIEW_COLOR,
+      width = self._base_width,
+      height = 125,
+      corner_radius = 0
     )
     
-    container.grid(row = 0, column = 0, sticky = 'n')
+    container.grid(
+      row = 0, 
+      column = 0, 
+      columnspan = 2, 
+      sticky = 'n'
+    )
     
     return container
   
@@ -75,10 +83,17 @@ class GUI(ctk.CTk):
   def _left_view(self, master) -> ctk.CTkScrollableFrame:
     container: ctk.CTkScrollableFrame = ctk.CTkScrollableFrame(
       master = master,
-      fg_color = css.LEFT_VIEW_COLOR
+      fg_color = css.LEFT_VIEW_COLOR,
+      width = 150,
+      height = self._base_height - 125,
+      corner_radius = 0
     )
     
-    container.grid(row = 1, column = 0, sticky = 'w')
+    container.grid(
+      row = 1, 
+      column = 0, 
+      sticky = 'nsw'
+    )
     
     return container
   
@@ -86,10 +101,17 @@ class GUI(ctk.CTk):
   def _main_view(self, master) -> ctk.CTkScrollableFrame:
     container: ctk.CTkScrollableFrame = ctk.CTkScrollableFrame(
       master = master,
-      fg_color = css.MAIN_VIEW_COLOR
+      fg_color = css.MAIN_VIEW_COLOR,
+      width = self._base_width - 185,
+      height = self._base_height - 125,
+      corner_radius = 0
     )
     
-    container.grid(row = 1, column = 1, sticky = 'e')
+    container.grid(
+      row = 1, 
+      column = 1, 
+      sticky = 'nsew'
+    )
   
     return container
   

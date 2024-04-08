@@ -40,6 +40,9 @@ class GUI(ctk.CTk):
     self.configure(
       font = css.DEFAULT_FONT,
       background = css.DEFAULT_BACKGROUND_COLOR)
+    
+    self.grid_columnconfigure(2, weight = 1)
+    self.grid_rowconfigure(2, weight = 1)
   
   @decorators.Private
   def _gui(self) -> None:
@@ -53,9 +56,9 @@ class GUI(ctk.CTk):
     top_view: ctk.CTkFrame = self._top_view(body_container)
     left_view: ctk.CTkScrollableFrame = self._left_view(body_container)
     main_view: ctk.CTkScrollableFrame = self._main_view(body_container)
-    top_view.pack()
-    left_view.pack()
-    main_view.pack()
+    # top_view.pack()
+    # left_view.pack()
+    # main_view.pack()
     
   @decorators.Private
   def _top_view(self, master) -> ctk.CTkFrame:
@@ -64,7 +67,7 @@ class GUI(ctk.CTk):
       fg_color = css.TOP_VIEW_COLOR
     )
     
-    container.grid_columnconfigure([0, 1], weight = 1)
+    container.grid(row = 0, column = 0, sticky = 'n')
     
     return container
   
@@ -75,6 +78,8 @@ class GUI(ctk.CTk):
       fg_color = css.LEFT_VIEW_COLOR
     )
     
+    container.grid(row = 1, column = 0, sticky = 'w')
+    
     return container
   
   @decorators.Private
@@ -83,6 +88,8 @@ class GUI(ctk.CTk):
       master = master,
       fg_color = css.MAIN_VIEW_COLOR
     )
+    
+    container.grid(row = 1, column = 1, sticky = 'e')
   
     return container
   

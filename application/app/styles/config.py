@@ -1,2 +1,5 @@
 DEFAULT_FONT = ('Arial', 12)
 DEFAULT_BACKGROUND_COLOR = 'white'
+TOP_VIEW_COLOR = 'red'
+LEFT_VIEW_COLOR = 'green'
+MAIN_VIEW_COLOR = 'blue'

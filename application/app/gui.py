@@ -40,32 +40,80 @@ class GUI(ctk.CTk):
     self.configure(
       font = css.DEFAULT_FONT,
       background = css.DEFAULT_BACKGROUND_COLOR)
+    
+    self.grid_columnconfigure(2, weight = 1)
+    self.grid_rowconfigure(2, weight = 1)
   
   @decorators.Private
   def _gui(self) -> None:
-    body_container = ctk.CTkScrollableFrame(
-      self, 
+    body_container: ctk.CTkFrame = ctk.CTkFrame(
+      master = self, 
       width = self._base_width,
       height = self._base_height,
       fg_color = css.DEFAULT_BACKGROUND_COLOR)
     body_container.pack(side = 'top', fill = 'both', expand = True)
+    
+    top_view: ctk.CTkFrame = self._top_view(body_container)
+    left_view: ctk.CTkScrollableFrame = self._left_view(body_container)
+    main_view: ctk.CTkScrollableFrame = self._main_view(body_container)
+    # top_view.pack()
+    # left_view.pack()
+    # main_view.pack()
+    
+  @decorators.Private
+  def _top_view(self, master) -> ctk.CTkFrame:
+    container: ctk.CTkFrame = ctk.CTkFrame(
+      master = master,
+      fg_color = css.TOP_VIEW_COLOR,
+      width = self._base_width,
+      height = 125,
+      corner_radius = 0
+    )
+    
+    container.grid(
+      row = 0, 
+      column = 0, 
+      columnspan = 2, 
+      sticky = 'n'
+    )
+    
+    return container
   
   @decorators.Private
-  def _new_container(self, **kwargs: Dict[str, Any]) -> ctk.CTkFrame:
-    '''
-    Attributes
-    ----------
-    master, width, height, border_width, fg_color, border_color
+  def _left_view(self, master) -> ctk.CTkFrame:
+    container: ctk.CTkFrame = ctk.CTkFrame(
+      master = master,
+      fg_color = css.LEFT_VIEW_COLOR,
+      width = 180,
+      height = self._base_height - 125,
+      corner_radius = 0
+    )
     
-    Methods
-    ----------
-    .configure(attributes = value, ...) \n
-    .cget(attribute_name) \n
-    .bind(sequence = None, command = None, add = None)
-    '''
-    container = ctk.CTkFrame(kwargs)
+    container.grid(
+      row = 1, 
+      column = 0, 
+      sticky = 'nsw'
+    )
+    
     return container
+  
+  @decorators.Private
+  def _main_view(self, master) -> ctk.CTkFrame:
+    container: ctk.CTkFrame = ctk.CTkFrame(
+      master = master,
+      fg_color = css.MAIN_VIEW_COLOR,
+      width = self._base_width - 185,
+      height = self._base_height - 125,
+      corner_radius = 0
+    )
     
+    container.grid(
+      row = 1, 
+      column = 1, 
+      sticky = 'nsew'
+    )
+  
+    return container
   
 def main(*args) -> None:
   app = GUI()

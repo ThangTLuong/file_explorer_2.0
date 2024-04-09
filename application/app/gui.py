@@ -80,11 +80,11 @@ class GUI(ctk.CTk):
     return container
   
   @decorators.Private
-  def _left_view(self, master) -> ctk.CTkScrollableFrame:
-    container: ctk.CTkScrollableFrame = ctk.CTkScrollableFrame(
+  def _left_view(self, master) -> ctk.CTkFrame:
+    container: ctk.CTkFrame = ctk.CTkFrame(
       master = master,
       fg_color = css.LEFT_VIEW_COLOR,
-      width = 150,
+      width = 180,
       height = self._base_height - 125,
       corner_radius = 0
     )
@@ -98,8 +98,8 @@ class GUI(ctk.CTk):
     return container
   
   @decorators.Private
-  def _main_view(self, master) -> ctk.CTkScrollableFrame:
-    container: ctk.CTkScrollableFrame = ctk.CTkScrollableFrame(
+  def _main_view(self, master) -> ctk.CTkFrame:
+    container: ctk.CTkFrame = ctk.CTkFrame(
       master = master,
       fg_color = css.MAIN_VIEW_COLOR,
       width = self._base_width - 185,

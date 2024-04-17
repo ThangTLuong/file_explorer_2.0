@@ -17,11 +17,9 @@ class GUI(ctk.CTk):
     
     # When the application is opened, this is the size it will take
     # For now, we're using a set number. Later on, I want to cache the size
-    self._base_width: int = 900
-    self._base_height: int = 500
     
     self.title('File Explorer 2.0')
-    self.geometry(f'{self._base_width}x{self._base_height}')
+    self.geometry(f'{css.BASE_WIDTH}x{css.BASE_HEIGHT}')
     self.minsize(width=self._min_width, height=self._min_height)
   
   
@@ -48,24 +46,21 @@ class GUI(ctk.CTk):
   def _gui(self) -> None:
     body_container: ctk.CTkFrame = ctk.CTkFrame(
       master = self, 
-      width = self._base_width,
-      height = self._base_height,
+      width = css.BASE_WIDTH,
+      height = css.BASE_HEIGHT,
       fg_color = css.DEFAULT_BACKGROUND_COLOR)
     body_container.pack(side = 'top', fill = 'both', expand = True)
     
     top_view: ctk.CTkFrame = self._top_view(body_container)
     left_view: ctk.CTkScrollableFrame = self._left_view(body_container)
     main_view: ctk.CTkScrollableFrame = self._main_view(body_container)
-    # top_view.pack()
-    # left_view.pack()
-    # main_view.pack()
     
   @decorators.Private
   def _top_view(self, master) -> ctk.CTkFrame:
     container: ctk.CTkFrame = ctk.CTkFrame(
       master = master,
       fg_color = css.TOP_VIEW_COLOR,
-      width = self._base_width,
+      width = css.BASE_WIDTH,
       height = 125,
       corner_radius = 0
     )
@@ -85,7 +80,7 @@ class GUI(ctk.CTk):
       master = master,
       fg_color = css.LEFT_VIEW_COLOR,
       width = 180,
-      height = self._base_height - 125,
+      height = css.BASE_HEIGHT - 124,
       corner_radius = 0
     )
     
@@ -102,8 +97,8 @@ class GUI(ctk.CTk):
     container: ctk.CTkFrame = ctk.CTkFrame(
       master = master,
       fg_color = css.MAIN_VIEW_COLOR,
-      width = self._base_width - 185,
-      height = self._base_height - 125,
+      width = css.BASE_WIDTH - 180,
+      height = css.BASE_HEIGHT - 124,
       corner_radius = 0
     )
     
